@@ -9,7 +9,20 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-<button class="btn btn-warning">Edit</button>
+<button class="btn btn-warning">Edit Now</button>
 </form>
+<div class="row d-flex flex-wrap pt-3">
+    {% for c in carall %}
+    <div class="col-3 mx-2">
+        <div class="card border " style="width: 18rem;">
+            <img src="{{c.car_model.car_image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{c.car_model.car_name}}</h5>
+                <p class="card-text">${{c.car_model.car_price}}</p>
+            </div>
+        </div>
 
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

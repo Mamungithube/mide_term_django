@@ -21,7 +21,7 @@
     </div>
   </div>
   {% if user.is_authenticated %}
-  <a href="" class="btn btn-danger">Buy now</a>
+  <a href="{% url 'buy_now' car.id %}" class="btn btn-danger">Buy now</a>
   {% endif %}
 </div>
 

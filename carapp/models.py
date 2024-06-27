@@ -7,7 +7,7 @@ class car(models.Model):
     car_price = models.IntegerField()
     car_description = models.CharField(max_length=200)
     Brand_name =models.ForeignKey(Brand,on_delete=models.CASCADE)
-    Quantity = models.IntegerField(null=True)
+    Quantity = models.IntegerField(default = 0)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -25,3 +25,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.name} on {self.car.car_name}"
+    
+
+class PaymentModel(models.Model):
+    car_model=models.ForeignKey(car,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    purchese_date=models.DateTimeField(auto_now_add=True)
+    net_quantity=models.IntegerField()
+    total_price=models.IntegerField()
