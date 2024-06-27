@@ -7,6 +7,7 @@ class car(models.Model):
     car_price = models.IntegerField()
     car_description = models.CharField(max_length=200)
     Brand_name =models.ForeignKey(Brand,on_delete=models.CASCADE)
+    Quantity = models.IntegerField(null=True)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
