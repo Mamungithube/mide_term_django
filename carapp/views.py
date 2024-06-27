@@ -92,4 +92,7 @@ def buy_now(request, car_id):
             total_price=car_data.car_price
         )
 
-    return redirect('car_detail', pk=car_data.id)
+    return redirect('car_detail', pk=car_id)
+
+
+
