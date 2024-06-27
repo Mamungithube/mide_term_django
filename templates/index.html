@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="d-flex justify-content-around gap-4">
+  <div>
+    <h2>Welcome to car webside</h2>
+    <br>
+    <h5>If you are a car dealer, you would probably know how dealerships are experiencing low footfall. But do you know
+      the reason behind that? It's because modern-day car buyers prefer to go through a dealership`s website first. You
+      need a useful car dealer website design to drive traffic and engage with your potential customers.
+      That being said, you can't develop a website on your own. You will need professional expertise through a web
+      development agency. With expert knowledge, you can gauge what your potential audience requires. Your car dealer
+      website design should resonate with your business theme. For instance, if you deal in luxury cars, vintage cars,
+      or an exclusive dealership of a particular car manufacturer.</h5>
+  </div>
+  <div>
+    <img style="width: 650px" src="{% static 'front-2.jpg' %}" alt="Front Image">
+  </div>
+</div>
+<hr />
+
+<div class="">
+  <h2>AVAILAVALE BRAND NAME BELLOW</h2>
+  {% for i in brand %}
+  <a class="btn btn-outline-danger m-2 text-decoration-none text-dark "
+      href="{% url 'brand_wise_car' i.slug %}">Name: {{i}}</a>
+  {% endfor %}
+</div>
+
+<hr />
+<h3>{{data | length}} car found</h3>
+<div class="row ">
+  {% for post in data %}
+  <div class="col-4 p-3" style="height: 15%;">
+    <img src="{{post.car_image.url}}" class="card-img-top" alt="car_Image" style="height: 70%;">
+    <div class="card-body">
+      <hr />
+      <h5 class="card-title">Car Name : {{post.car_name}}</h5>
+      </br>
+      <p class="card-text">description : {{post.car_description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">car prize : {{post.car_price}} $</li>
+      <li class="list-group-item">Brand Name : {{post.Brand_name}}</li>
+      <li class="list-group-item">Car Quiatity : {{post.car_name}} </li>
+    </ul>
+  <div>
+    <a href="{% url 'car_detail' post.id%}" class="btn btn-outline-warning" type="button">
+      View Details
+    </a>
+  </div>
+
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}
